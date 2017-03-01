@@ -54,12 +54,16 @@ export default function setupServiceModule (store) {
 }
 
 export function mapMutations (service) {
-  const idField = service.vuexOptions.idField
+  const { vuexOptions } = service
+  const idField = vuexOptions.module.idField || vuexOptions.global.idField
   return {
     // Adding a single item also sets the current item.
     addItem (state, payload) {
       state.ids.push(payload[idField])
-      state.keyedById[idField] = payload
+      state.keyedById = {
+        ...state.keyedById,
+        [payload[idField]]: payload
+      }
       state.current = payload
     },
     addItems (state, payload) {
@@ -97,7 +101,7 @@ export function mapActions (service) {
     create ({state, commit, rootState}, data) {
       service.create(data)
         .then(data => {
-          commit('setCurrent', data)
+          commit('addItem', data)
         })
     },
     update () {},
@@ -109,7 +113,7 @@ export function mapActions (service) {
 export function mapGetters (service) {
   return {
     data (state) {
-      return Object.keys(state.keyedById).map(item => item)
+      return Object.keys(state.keyedById).map(key => state.keyedById[key])
     }
   }
 }

@@ -1,9 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <CreateTodo />
     <ul>
       <li v-for="todo in data">
-        {{description}}
+        {{todo.name}}
       </li>
     </ul>
   </div>
@@ -11,6 +12,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import CreateTodo from './CreateTodo'
 
 export default {
   name: 'todos',
@@ -20,9 +22,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('todos', [
-      'data'
-    ])
+    ...mapGetters('todos', ['data'])
+  },
+  components: {
+    CreateTodo
   }
 }
 </script>

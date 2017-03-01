@@ -14,7 +14,7 @@ const feathersClient = feathers()
   .configure(auth())
   .configure(feathersVuex(store))
 
-feathersClient.service('/api/todos')
+feathersClient.service('/todos').vuex({idField: '_id'})
 feathersClient.service('/deeply/nested/names')
 feathersClient.service('/explicit/namespace').vuex({name: '/explicit/namespace'})
 
