@@ -1,11 +1,12 @@
 <template>
-  <form @submit.prevent="createTodo({name})">
-    <input type="text" v-model="name">
+  <form @submit.prevent="submit({name})">
+    <div><input type="text" v-model="name"></div>
+    <div v-if="current">Current: <input type="text" v-model="current.name"> id: {{current._id}}</div>
   </form>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'create-todo',
@@ -14,11 +15,23 @@ export default {
       name: ''
     }
   },
+  computed: {
+    ...mapGetters('todos', ['current'])
+  },
   methods: {
-    createTodo (todo) {
+    submit (todo) {
       this.create(todo)
+      this.name = ''
+      // if (this.current) {
+        // this.update(this.current.id, {name: 'hi'})
+      // }
+      // this.clearCurrentId()
     },
-    ...mapActions('todos', ['create'])
+    ...mapActions('todos', [
+      'create',
+      'update',
+      'clearCurrentId'
+    ])
   }
 }
 </script>

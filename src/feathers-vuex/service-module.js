@@ -37,17 +37,11 @@ export default function setupServiceModule (store) {
         state: {
           ids: [],
           keyedById: {},
-          current: {}
+          currentId: undefined
         },
-        mutations: {
-          ...mapMutations(service)
-        },
-        actions: {
-          ...mapActions(service)
-        },
-        getters: {
-          ...mapGetters(service)
-        }
+        mutations: mapMutations(service),
+        actions: mapActions(service),
+        getters: mapGetters(service)
       })
     }
   }
@@ -59,54 +53,87 @@ export function mapMutations (service) {
   return {
     // Adding a single item also sets the current item.
     addItem (state, payload) {
-      state.ids.push(payload[idField])
+      let id = payload[idField]
+      state.ids.push(id)
       state.keyedById = {
         ...state.keyedById,
-        [payload[idField]]: payload
+        [id]: payload
       }
-      state.current = payload
-    },
-    addItems (state, payload) {
-      if (!Array.isArray(payload)) {
-        throw new Error('the addItems mutation must receive an array')
-      }
-      payload.forEach(item => {
-        state.ids.push(payload[idField])
-        state.keyedById[idField] = item
-      })
     },
     removeData (state, id) {
       state.data = state.data.filter(item => item[service.id] !== id)
-      if (state.current[service.id] === id) {
-        state.current = undefined
+      if (state.currentId === id) {
+        state.currentId = undefined
       }
     },
-    updateData (state, payload) {
-
+    updateItem (state, payload) {
+      let id = payload[idField]
+      state.keyedById[id] = payload
     },
     clearData (state) {
       state.ids = []
-      state.current = undefined
+      state.currentId = undefined
       state.keyedById = {}
     },
-    setCurrent (state, payload) { state.current = payload },
-    clearCurrent (state) { state.current = undefined }
+    setCurrentId (state, payload) {
+      debugger
+      let id = payload[idField] || payload
+      state.currentId = id
+    },
+    clearCurrentId (state) { state.currentId = undefined }
   }
 }
 
 export function mapActions (service) {
+  const { vuexOptions } = service
+  const idField = vuexOptions.module.idField || vuexOptions.global.idField
   return {
-    find () {},
-    get () {},
-    create ({state, commit, rootState}, data) {
-      service.create(data)
-        .then(data => {
-          commit('addItem', data)
+    find ({ dispatch }, params) {
+      service.find(params)
+        .then(response => {
+          let data = response.data || response
+          data.map(item => dispatch('addOrUpdate', item))
         })
     },
-    update () {},
+
+    get ({ commit, dispatch }, params) {
+      let id
+      if (typeof params === 'string' || typeof params === 'number') {
+        id = params[idField]
+        delete params[idField]
+      } else {
+        id = params
+        params = undefined
+      }
+      service.get(id, params)
+        .then(item => {
+          dispatch('addOrUpdate', item)
+          commit('setCurrentId', item)
+        })
+    },
+
+    create ({ commit, dispatch }, data) {
+      service.create(data)
+        .then(item => {
+          dispatch('addOrUpdate', item)
+          commit('setCurrentId', item)
+        })
+    },
+
+    update ({ dispatch }, id, data) {
+      console.log(id)
+      debugger
+      console.log(data)
+    },
+
     patch () {},
-    remove () {}
+    remove () {},
+
+    addOrUpdate ({ state, commit }, item) {
+      let id = item[idField]
+      let existing = state.keyedById[id]
+      existing ? commit('updateItem', item) : commit('addItem', item)
+    }
   }
 }
 
@@ -114,6 +141,9 @@ export function mapGetters (service) {
   return {
     data (state) {
       return Object.keys(state.keyedById).map(key => state.keyedById[key])
+    },
+    current (state) {
+      return state.currentId ? state.keyedById[state.currentId] : null
     }
   }
 }
