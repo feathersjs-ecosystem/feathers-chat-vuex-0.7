@@ -17,9 +17,10 @@
     "feathers": "^2.1.1",
     "feathers-authentication-client": "^0.1.10",
     "feathers-hooks": "^1.8.1",
+    "feathers-reactive": "^0.4.1",
     "feathers-socketio": "^1.5.2",
-    "feathers-vuex": "*",
     "rubberduck": "^1.1.1",
+    "rxjs": "^5.2.0",
     "vue": "^2.2.1",
     "vue-router": "^2.3.0",
     "vuex": "^2.2.1"

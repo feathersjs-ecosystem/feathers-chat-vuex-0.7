@@ -17,7 +17,12 @@ import CreateTodo from './CreateTodo'
 export default {
   name: 'todos',
   created () {
-    this.find({})
+    this.find({
+      query: {
+        $sort: {createdAt: 1}
+      },
+      $limit: 25
+    })
   },
   data () {
     return {
