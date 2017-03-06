@@ -1,12 +1,12 @@
 <template>
   <form @submit.prevent="submit({name})">
     <div><input type="text" v-model="name"></div>
-    <div v-if="current">Current: <input type="text" v-model="current.name"> id: {{current._id}}</div>
+    <div v-if="copy">{{copy}}copy: <input type="text" v-model="copy.name"> id: {{copy._id}}</div>
   </form>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'create-todo',
@@ -16,7 +16,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('todos', ['current'])
+    copy () {
+
+    }
   },
   methods: {
     submit (todo) {

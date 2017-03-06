@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <CreateTodo />
     <ul>
-      <li v-for="todo in data">
+      <li v-for="todo in list">
         {{todo.name}}
       </li>
     </ul>
@@ -11,18 +11,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import CreateTodo from './CreateTodo'
 
 export default {
   name: 'todos',
+  created () {
+    this.find({})
+  },
   data () {
     return {
       msg: 'Todos'
     }
   },
   computed: {
-    ...mapGetters('todos', ['data'])
+    ...mapGetters('todos', ['list'])
+  },
+  methods: {
+    ...mapActions('todos', ['find'])
   },
   components: {
     CreateTodo

@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="service in services">
+        <tr v-for="service in services.vuex">
           <td>{{service.path}}</td>
           <td>{{service.vuexOptions.module.name}}</td>
         </tr>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'services',
@@ -29,7 +29,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('feathers', [
+    ...mapState('feathers', [
       'services'
     ])
   }
