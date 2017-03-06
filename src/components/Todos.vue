@@ -3,10 +3,24 @@
     <h1>{{ msg }}</h1>
     <CreateTodo />
     <ul>
-      <li v-for="todo in list">
-        {{todo.name}}
-      </li>
+      <li @click="setUser('Marshall')">Marshall</li>
+      <li @click="setUser('Aubree')">Aubree</li>
     </ul>
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Created By</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="todo in findList(query)">
+          <td>{{todo.name}}</td>
+          <td>{{todo.createdBy}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>{{findList(query).length}} todos created by {{user}}</div>
   </div>
 </template>
 
@@ -19,20 +33,27 @@ export default {
   created () {
     this.find({
       query: {
-        $sort: {createdAt: 1}
-      },
-      $limit: 25
+        $sort: {createdAt: 1},
+        $limit: 50
+      }
     })
   },
   data () {
     return {
-      msg: 'Todos'
+      msg: 'Todos',
+      user: 'Marshall'
     }
   },
   computed: {
-    ...mapGetters('todos', ['list'])
+    query () {
+      return {query: {createdBy: this.user}}
+    },
+    ...mapGetters('todos', ['list', 'findList'])
   },
   methods: {
+    setUser (name) {
+      this.user = name
+    },
     ...mapActions('todos', ['find'])
   },
   components: {
