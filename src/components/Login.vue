@@ -9,14 +9,14 @@
     <div class="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop">
       <form class="form" method="post" action="/auth/local">
         <fieldset>
-          <input class="block" type="email" name="email" placeholder="email">
+          <input class="block" type="email" name="email" placeholder="email" v-model="email">
         </fieldset>
 
         <fieldset>
-          <input class="block" type="password" name="password" placeholder="password">
+          <input class="block" type="password" name="password" placeholder="password" v-model="password">
         </fieldset>
 
-        <button type="submit" class="button button-primary block login">
+        <button type="submit" @submit.prevent="onSubmit(email, password)" class="button button-primary block login">
           Login
         </button>
       </form>
@@ -25,6 +25,18 @@
 </main>
 </template>
 
-<style scoped>
+<script>
+export default {
+  data () {
+    return {
+      email: null,
+      password: null
+    }
+  },
+  methods: {
+    onSubmit (email, password) {
 
-</style>
+    }
+  }
+}
+</script>
