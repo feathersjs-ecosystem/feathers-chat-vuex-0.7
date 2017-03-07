@@ -16,9 +16,12 @@
 </template>
 
 <script>
-
+export default {
+  name: 'chat-app',
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      // access to component instance via `vm`
+    })
+  }
+}
 </script>
-
-<style scoped>
-
-</style>
