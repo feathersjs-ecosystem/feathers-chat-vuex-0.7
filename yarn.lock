@@ -2672,6 +2672,10 @@ get-uri@1:
     ftp "~0.3.5"
     readable-stream "2"
 
+getbase@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/getbase/-/getbase-3.2.2.tgz#78a3f5d90638f539527c0fcb5cdf62821a44efae"
+
 getpass@^0.1.1:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.6.tgz#283ffd9fc1256840875311c1b60e8c40187110e6"
