@@ -115,6 +115,21 @@ main.signup .button-primary {
   width: 100%;
 }
 
+.button-secondary {
+  background: none;
+  border: 2px solid #CFCFCF;
+  color: #999;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.button-secondary:hover,
+.button-secondary:focus {
+  background: none;
+  border: 2px solid #31D8A0;
+  color: #31D8A0;
+}
+
 
 /* ======================================= */
 /* Chat App */
@@ -236,10 +251,6 @@ main.chat .message p.message-header span.sent-date {
 
 #app form input {
   height: auto !important;
-}
-
-#app form button {
-  margin-left: 10px;
 }
 
 [v-cloak] {

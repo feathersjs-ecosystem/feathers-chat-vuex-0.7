@@ -13,7 +13,7 @@
       <div class="col-12 push-4-tablet col-4-tablet">
         <div class="row">
           <div class="col-12">
-            <router-link as="a" :to="{name: 'Login'}" class="button button-primary block login">Login</router-link> 
+            <router-link as="a" :to="{name: 'Login'}" class="button button-primary block login">Login</router-link>
           </div>
         </div>
 
