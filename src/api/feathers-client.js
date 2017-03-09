@@ -13,7 +13,7 @@ const socket = io('http://localhost:3030', {transports: ['websocket']})
 const feathersClient = feathers()
   .configure(hooks())
   .configure(socketio(socket))
-  .configure(auth())
+  .configure(auth({ storage: window.localStorage }))
   .configure(rx(RxJS, {idField: '_id'}))
   .configure(feathersVuex(store))
 
