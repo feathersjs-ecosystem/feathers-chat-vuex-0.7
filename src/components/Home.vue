@@ -30,12 +30,7 @@
 
 <script>
 export default {
-  name: 'todos',
-  data () {
-    return {
-      msg: 'Welcome Home'
-    }
-  }
+  name: 'todos'
 }
 </script>
 
