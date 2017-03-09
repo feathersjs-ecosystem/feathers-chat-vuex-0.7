@@ -12,11 +12,16 @@ export default {
       newMessage: ''
     }
   },
-
+  props: {
+    createMessage: Function
+  },
   methods: {
     addMessage () {
       // Create a new message and then clear the input field
-      messageService.create({text: this.newMessage}).then(this.newMessage = '')
+      this.createMessage({text: this.newMessage}).then(this.clearMessage)
+    },
+    clearMessage () {
+      this.newMessage = ''
     }
   }
 }

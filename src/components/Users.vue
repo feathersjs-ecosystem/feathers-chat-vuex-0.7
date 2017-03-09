@@ -19,29 +19,10 @@
 
 <script>
 export default {
-  name: 'todos',
-  data () {
-    return {
-      msg: 'Welcome Home'
-    }
-  },
-  mounted () {
-    // Find all users
-    userService.find().then(page => {
-      this.users = page.data
-    })
-    // We will also see when new users get created in real-time
-    userService.on('created', user => {
-      this.users.push(user)
-    })
-  },
-  methods: {
-    logout () {
-      app.logout().then(() => {
-        vm.user.authenticated = false
-        window.location.href = '/index.html'
-      })
-    }
+  name: 'user-list',
+  props: {
+    users: Array,
+    logout: Function
   }
 }
 </script>

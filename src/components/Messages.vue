@@ -6,49 +6,31 @@
       </div>
     </main>
 
-    <slot></slot>
-
+    <ComposeMessage />
   </div>
 </template>
 
 <script>
+import ComposeMessage from './Composer.vue'
+
 export default {
   data () {
     return {
-      placeholder: PLACEHOLDER,
+      placeholder: 'PLACEHOLDER',
       messages: []
     }
   },
 
-  mounted () {
-    // Find the latest 10 messages. They will come with the newest first
-    // which is why we have to reverse before adding them
-    messageService.find({
-      query: {
-        $sort: {createdAt: -1},
-        $limit: 25
-      }
-    }).then(page => {
-      page.data.reverse()
-      this.messages = page.data
-      this.scrollToBottom()
-    })
-
-    // Listen to created events and add the new message in real-time
-    messageService.on('created', message => {
-      this.messages.push(message)
-      this.newMessage = ''
-      this.scrollToBottom()
-    })
-  },
-
   methods: {
-    scrollToBottom: () => {
+    scrollToBottom: vm => {
       vm.$nextTick(() => {
         const node = vm.$el.getElementsByClassName('chat')[0]
         node.scrollTop = node.scrollHeight
       })
     }
+  },
+  components: {
+    ComposeMessage
   }
 }
 </script>
