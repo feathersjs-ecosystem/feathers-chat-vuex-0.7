@@ -36,10 +36,15 @@ export default {
     }),
     ...mapActions('auth', ['logout'])
   },
+  created () {
+    if (!this.user()) {
+      this.$router.replace({name: 'Login'})
+    }
+  },
   mounted () {
     // Find the latest 10 messages. They will come with the newest first
     // which is why we have to reverse before adding them
-    this.findUsers({
+    this.user() && this.findUsers({
       query: {
         $sort: {createdAt: -1},
         $limit: 25
@@ -51,11 +56,6 @@ export default {
     //   this.messages = page.data
     //   this.scrollToBottom()
     // })
-  },
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      // access to component instance via `vm`
-    })
   },
   components: {
     UserList,
