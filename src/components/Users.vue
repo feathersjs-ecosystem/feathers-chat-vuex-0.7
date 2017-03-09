@@ -5,7 +5,7 @@
     </header>
     <ul class="flex flex-column flex-1 list-unstyled user-list">
       <li v-for="(user, index) in users" track-by="index">
-        <a class="block relative" href="#">
+        <a class="block relative" href="javascript://">
           <img :src="user.avatar || dummyUser.avatar" alt="" class="avatar">
           <span class="absolute username">{{ user.email || dummyUser.email }}</span>
         </a>
