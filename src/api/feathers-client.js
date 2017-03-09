@@ -15,7 +15,12 @@ const feathersClient = feathers()
   .configure(socketio(socket))
   .configure(auth({ storage: window.localStorage }))
   .configure(rx(RxJS, {idField: '_id'}))
-  .configure(feathersVuex(store))
+  .configure(feathersVuex(store, {
+    idField: '_id',
+    auth: {
+      userService: '/users'
+    }
+  }))
 
 feathersClient.service('/users')
 feathersClient.service('/messages')
