@@ -5,7 +5,6 @@
 <script>
 import 'getbase/dist/css/styles.css'
 import './styles/chat.css'
-import { mapActions } from 'vuex'
 
 export default {
   name: 'app',
@@ -19,11 +18,8 @@ export default {
       this.$router.replace({name: 'Chat'})
     }
   },
-  methods: {
-    ...mapActions('auth', ['authenticate'])
-  },
   mounted () {
-    this.authenticate().catch(error => {
+    this.$store.dispatch('auth/authenticate').catch(error => {
       if (!error.message.includes('Could not find stored JWT')) {
         console.error(error)
       }
