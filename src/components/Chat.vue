@@ -7,8 +7,13 @@
       </div>
     </header>
     <div class="flex flex-row flex-1 clear" v-if="user">
-      <user-list :users="users" :logout="logout"></user-list>
-      <messages />
+
+      <user-list :users="users"
+        :logout="logout" />
+        
+      <message-list :messages="messages"
+        :findMessages="findUsers" 
+        :createMessage="createMessage" />
     </div>
   </div>
 </template>
@@ -16,7 +21,7 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import UserList from './Users'
-import Messages from './Messages'
+import MessageList from './Messages'
 
 export default {
   name: 'chat-app',
@@ -26,9 +31,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('users', { users: 'list' })
+    ...mapGetters('users', { users: 'list' }),
+    ...mapGetters('messages', { messages: 'list' })
   },
   methods: {
+    ...mapActions('messages', { findMessages: 'find', createMessage: 'create' }),
     ...mapActions('users', { findUsers: 'find' }),
     ...mapActions('auth', ['logout'])
   },
@@ -38,14 +45,22 @@ export default {
     }
   },
   mounted () {
-    // Find the latest 10 messages. They will come with the newest first
-    // which is why we have to reverse before adding them
-    this.user() && this.findUsers({
-      query: {
-        $sort: {createdAt: -1},
-        $limit: 25
-      }
-    })
+    if (this.user()) {
+      // Query users from Feathers
+      this.findUsers({
+        query: {
+          $sort: {createdAt: -1},
+          $limit: 25
+        }
+      })
+      // Query messages from Feathers
+      this.findMessages({
+        query: {
+          $sort: {createdAt: -1},
+          $limit: 25
+        }
+      })
+    }
     // TODO: Move this to a computed property
     // .then(page => {
     //   page.data.reverse()
@@ -55,7 +70,7 @@ export default {
   },
   components: {
     UserList,
-    Messages
+    MessageList
   }
 }
 </script>

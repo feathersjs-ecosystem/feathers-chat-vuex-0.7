@@ -2,25 +2,30 @@
   <div class="flex flex-column col col-9">
     <main class="chat flex flex-column flex-1 clear">
       <div class="message flex flex-row" v-for="(message, index) in messages" track-by="index" v-cloak>
-        <message :message="message"></message>
+        <single-message :message="message" />
       </div>
     </main>
 
-    <ComposeMessage />
+    <ComposeMessage :createMessage="createMessage" />
   </div>
 </template>
 
 <script>
 import ComposeMessage from './Composer.vue'
+import SingleMessage from './Message.vue'
 
 export default {
+  name: 'message-list',
   data () {
     return {
-      placeholder: 'PLACEHOLDER',
-      messages: []
+      placeholder: 'PLACEHOLDER'
     }
   },
-
+  props: {
+    messages: Array,
+    findMessages: Function,
+    createMessage: Function
+  },
   methods: {
     scrollToBottom: vm => {
       vm.$nextTick(() => {
@@ -30,7 +35,8 @@ export default {
     }
   },
   components: {
-    ComposeMessage
+    ComposeMessage,
+    SingleMessage
   }
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <img :src="message.sentBy.avatar || placeholder" v-bind:alt="message.sentBy.email" class="avatar">
+    <img :src="message.user.avatar || placeholder" v-bind:alt="message.user.email" class="avatar">
     <div class="message-wrapper">
       <p class="message-header">
-        <span class="username font-600">{{ message.sentBy.email }}</span>
-        <span class="sent-date font-300">{{ message.createdAt | moment }}</span>
+        <span class="username font-600">{{ message.user.email }}</span>
+        <span class="sent-date font-300">{{ formattedDate }}</span>
       </p>
       <p class="message-content font-300">{{ message.text }}</p>
     </div>
@@ -12,12 +12,13 @@
 </template>
 
 <script>
+import dateFns from 'date-fns'
+
 export default {
   props: ['message', 'index'],
-  template: '#message-template',
-  filters: {
-    moment: date => {
-      return moment(date).format('MMM Do, hh:mm:ss')
+  computed: {
+    formattedDate () {
+      return dateFns.format(this.message.createdAt, 'MMM Do, hh:mm:ss')
     }
   }
 }
