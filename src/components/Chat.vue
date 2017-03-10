@@ -49,7 +49,7 @@ export default {
       // Query users from Feathers
       this.findUsers({
         query: {
-          $sort: {createdAt: -1},
+          $sort: {email: 1},
           $limit: 25
         }
       })
@@ -60,12 +60,6 @@ export default {
           $limit: 25
         }
       })
-      // .then(page => {
-      //   // TODO: Move this to a computed property
-      //   page.data.reverse()
-      //   this.messages = page.data
-      //   this.scrollToBottom()
-      // })
     }
   },
   components: {
