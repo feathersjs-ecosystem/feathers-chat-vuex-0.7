@@ -24,6 +24,7 @@ export default {
     createMessage: Function
   },
   methods: {
+    // TODO: Hook this up
     scrollToBottom: vm => {
       vm.$nextTick(() => {
         const node = vm.$el.getElementsByClassName('chat')[0]
