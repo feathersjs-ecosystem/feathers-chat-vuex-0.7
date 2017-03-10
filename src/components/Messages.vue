@@ -15,6 +15,7 @@ export default {
   name: 'message-list',
   data () {
     return {
+      // TODO: Fix the placeholder
       placeholder: 'PLACEHOLDER'
     }
   },
