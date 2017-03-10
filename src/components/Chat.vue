@@ -22,7 +22,7 @@ export default {
   name: 'chat-app',
   data () {
     return {
-      ...mapState('auth', ['payload', 'user'])
+      ...mapState('auth', ['user'])
     }
   },
   computed: {
