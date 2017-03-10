@@ -26,14 +26,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('users', {
-      users: 'list'
-    })
+    ...mapGetters('users', { users: 'list' })
   },
   methods: {
-    ...mapActions('users', {
-      findUsers: 'find'
-    }),
+    ...mapActions('users', { findUsers: 'find' }),
     ...mapActions('auth', ['logout'])
   },
   created () {
