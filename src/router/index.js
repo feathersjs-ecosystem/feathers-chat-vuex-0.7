@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Todos from '@/components/Todos'
 import Login from '@/components/Login'
 import Signup from '@/components/Signup'
-import Chat from '@/components/Chat'
+import Chat from '@/components/Chat/Chat'
 import Services from '@/components/Services'
 
 Vue.use(Router)
