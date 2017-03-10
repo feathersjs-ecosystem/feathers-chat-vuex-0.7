@@ -9,17 +9,25 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'app',
+  computed: {
+    user () {
+      return this.$store.state.auth.user
+    }
+  },
+  watch: {
+    user (newVal) {
+      this.$router.replace({name: 'Chat'})
+    }
+  },
   methods: {
     ...mapActions('auth', ['authenticate'])
   },
-  created () {
-    this.authenticate()
-      .then(() => this.$router.replace({name: 'Chat'}))
-      .catch(error => {
-        if (!error.message.includes('Could not find stored JWT')) {
-          console.error(error)
-        }
-      })
+  mounted () {
+    this.authenticate().catch(error => {
+      if (!error.message.includes('Could not find stored JWT')) {
+        console.error(error)
+      }
+    })
   }
 }
 </script>
