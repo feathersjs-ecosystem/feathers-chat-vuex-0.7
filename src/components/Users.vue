@@ -1,7 +1,7 @@
 <template>
   <aside class="sidebar col col-3 flex flex-column flex-space-between">
     <header class="flex flex-row flex-center">
-      <h4 class="font-300 text-center"><span class="font-600 online-count" v-cloak>{{ users.length }}</span> users</h4>
+      <h4 class="font-300 text-center"><span class="font-600 online-count" v-cloak>{{ users.length }}</span> {{plural}}</h4>
     </header>
     <ul class="flex flex-column flex-1 list-unstyled user-list">
       <li v-for="(user, index) in users" track-by="index">
@@ -20,6 +20,11 @@
 <script>
 export default {
   name: 'user-list',
+  computed: {
+    plural () {
+      return this.users.length === 1 ? 'user' : 'users'
+    }
+  },
   props: {
     users: Array,
     logout: Function

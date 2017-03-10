@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex flex-column">
+  <main id="chat" class="flex flex-column">
     <header class="title-bar flex flex-row flex-center">
       <div class="title-wrapper block center-element">
         <img class="logo" src="http://feathersjs.com/img/feathers-logo-wide.png" alt="Feathers Logo">
@@ -15,7 +15,7 @@
         :findMessages="findUsers" 
         :createMessage="createMessage" />
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -60,13 +60,13 @@ export default {
           $limit: 25
         }
       })
+      // .then(page => {
+      //   // TODO: Move this to a computed property
+      //   page.data.reverse()
+      //   this.messages = page.data
+      //   this.scrollToBottom()
+      // })
     }
-    // TODO: Move this to a computed property
-    // .then(page => {
-    //   page.data.reverse()
-    //   this.messages = page.data
-    //   this.scrollToBottom()
-    // })
   },
   components: {
     UserList,
@@ -74,3 +74,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+main#chat {
+  height: 100%;
+}
+</style>

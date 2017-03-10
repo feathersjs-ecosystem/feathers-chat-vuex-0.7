@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="message flex flex-row" >
     <img :src="message.user.avatar || placeholder" v-bind:alt="message.user.email" class="avatar">
     <div class="message-wrapper">
       <p class="message-header">
