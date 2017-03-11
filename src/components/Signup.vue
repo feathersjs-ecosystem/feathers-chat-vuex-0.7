@@ -11,18 +11,18 @@
         <fieldset>
           <input class="block"
             v-model="email"
-            type="email" 
-            name="email" 
-            placeholder="email" 
+            type="email"
+            name="email"
+            placeholder="email"
             required>
         </fieldset>
 
         <fieldset>
-          <input class="block" 
+          <input class="block"
             v-model="password"
-            type="password" 
-            name="password" 
-            placeholder="password" 
+            type="password"
+            name="password"
+            placeholder="password"
             required>
         </fieldset>
 
@@ -30,7 +30,7 @@
           Signup
         </button>
 
-        <router-link as="button" :to="{name: 'Home'}" class="button button-secondary block">Back</router-link> 
+        <router-link as="button" :to="{name: 'Home'}" class="button button-secondary block">Back</router-link>
       </form>
     </div>
   </div>
@@ -49,11 +49,19 @@ export default {
   },
   methods: {
     onSubmit (email, password) {
+      // Automatically log the user in after successful signup.
       this.createUser({ email, password })
+        .then(response => this.authenticate({strategy: 'local', email, password}))
+        .catch(error => {
+          console.log('SignupError:', error)
+        })
     },
     ...mapActions('users', {
       createUser: 'create'
-    })
+    }),
+    ...mapActions('auth', [
+      'authenticate'
+    ])
   }
 }
 </script>
