@@ -4,6 +4,10 @@ html, body {
   height: 100%;
 }
 
+#app {
+  height: 100%;
+}
+
 .flex-1 {
   flex: 1 1 0;
 }
@@ -48,46 +52,6 @@ a:focus {
 }
 
 /* ======================================= */
-/* Home Page */
-/* ======================================= */
-
-main.home {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-main.home img.logo {
-  width: 100%;
-  max-width: 400px;
-}
-
-main.home h3.title {
-  color: #969696;
-  font-weight: 100;
-  text-transform: uppercase;
-  margin-bottom: 40px;
-}
-
-main.home .button.login,
-main.home .button.signup {
-  padding-top: 1.2em;
-  padding-bottom: 1.2em;
-}
-
-main.home .button.login {
-  background: none;
-  border: 2px solid #CFCFCF;
-  color: #999;
-}
-
-main.home .button.login:hover,
-main.home .button.login:focus {
-  background: none;
-  border: 2px solid #31D8A0;
-  color: #31D8A0;
-}
-
-/* ======================================= */
 /* Signup and Login */
 /* ======================================= */
 
@@ -129,114 +93,6 @@ main.signup .button-primary {
   background: none;
   border: 2px solid #31D8A0;
   color: #31D8A0;
-}
-
-
-/* ======================================= */
-/* Chat App */
-/* ======================================= */
-
-#app {
-  height: 100%;
-}
-
-/* Header */
-header.title-bar {
-  padding: 10px 0;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-header.title-bar img.logo {
-  width: 100%;
-  max-width: 140px;
-}
-
-header.title-bar span.title {
-  color: #969696;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 1.2em;
-  margin-left: 7px;
-}
-
-/* User List Sidebar */
-
-aside.sidebar {
-  background: #f8f8f8;
-  // height: 100%;
-  max-width: 340px;
-  padding: 15px;
-  border-right: 1px solid #f1f1f1;
-}
-
-aside.sidebar .online-count {
-  color: #31D8A0;
-  margin-right: 5px;
-}
-
-aside.sidebar h4 {
-  margin: 0 0 20px 0;
-  color: #C3C3C3;
-}
-
-aside.sidebar .user-list {
-  overflow-y: scroll;
-}
-
-aside.sidebar li {
-  margin: 15px 0;
-}
-
-aside.sidebar li > a {
-  color: #555555;
-}
-
-aside.sidebar li > a:hover > span,
-aside.sidebar li > a:focus > span, {
-  color: #31D8A0;
-}
-
-aside.sidebar img.avatar {
-  border-radius: 100%;
-  height: 45px;
-  width: 45px;
-  margin-right: 10px;
-}
-
-aside.sidebar .username {
-  position: absolute;
-  line-height: 45px;
-}
-
-/* Main Chat */
-
-main.chat {
-  padding: 10px;
-  overflow-y: scroll;
-}
-
-main.chat img.avatar {
-  border-radius: 100%;
-  height: 45px;
-  width: 45px;
-  flex: none;
-}
-
-main.chat .message {
-  flex: 0 0 auto;
-}
-
-main.chat .message img.avatar {
-  margin-right: 10px;
-}
-
-main.chat .message p.message-header {
-  margin: 0;
-  font-size: 0.9em;
-}
-
-main.chat .message p.message-header span.sent-date {
-  color: #969696;
 }
 
 /* Send Message Form */

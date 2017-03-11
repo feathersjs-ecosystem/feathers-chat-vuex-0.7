@@ -14,13 +14,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="todo in findList(query)">
+        <tr v-for="todo in todos">
           <td>{{todo.name}}</td>
           <td>{{todo.createdBy}}</td>
         </tr>
       </tbody>
     </table>
-    <div>{{findList(query).length}} todos created by {{user}}</div>
+    <div>{{todos.length}} todos created by {{user}}</div>
   </div>
 </template>
 
@@ -31,7 +31,8 @@ import CreateTodo from './CreateTodo'
 export default {
   name: 'todos',
   created () {
-    this.find({
+    // Pull data into the store
+    this.findTodosOnServer({
       query: {
         $sort: {createdAt: 1},
         $limit: 50
@@ -45,24 +46,19 @@ export default {
     }
   },
   computed: {
-    query () {
-      return {query: {createdBy: this.user}}
+    todos () {
+      return this.findTodosInStore({query: {createdBy: this.user}}).data
     },
-    ...mapGetters('todos', ['list', 'findList'])
+    ...mapGetters('todos', { findTodosInStore: 'find' })
   },
   methods: {
     setUser (name) {
       this.user = name
     },
-    ...mapActions('todos', ['find'])
+    ...mapActions('todos', {findTodosOnServer: 'find'})
   },
   components: {
     CreateTodo
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
