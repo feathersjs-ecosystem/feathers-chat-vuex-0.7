@@ -7,6 +7,12 @@
   </div>
   <div class="row">
     <div class="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop">
+
+      <div class="error" v-if="error">
+        {{error.message}}
+        <a class="close" href="javascript://" @click.prevent="dismissError">dismiss</a>
+      </div>
+
       <form class="form" method="post" @submit.prevent="onSubmit(email, password)">
         <fieldset>
           <input class="block"
@@ -44,16 +50,28 @@ export default {
   data () {
     return {
       email: undefined,
-      password: undefined
+      password: undefined,
+      error: undefined
     }
   },
   methods: {
+    dismissError () {
+      this.error = undefined
+    },
     onSubmit (email, password) {
+      this.dismissError()
+
       // Automatically log the user in after successful signup.
       this.createUser({ email, password })
         .then(response => this.authenticate({strategy: 'local', email, password}))
         .catch(error => {
-          console.log('SignupError:', error)
+          // Convert the error to a plain object and add a message.
+          let type = error.errorType
+          error = Object.assign({}, error)
+          error.message = (type === 'uniqueViolated')
+            ? 'That email address is unavailable.'
+            : 'An error prevented signup.'
+          this.error = error
         })
     },
     ...mapActions('users', {
@@ -67,5 +85,8 @@ export default {
 </script>
 
 <style scoped>
-
+div.error {
+  text-align: center;
+  color: hotpink;
+}
 </style>
