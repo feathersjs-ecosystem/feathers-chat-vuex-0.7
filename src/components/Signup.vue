@@ -65,7 +65,7 @@ export default {
       // Automatically log the user in after successful signup.
       this.createUser({ email, password })
         .then(response => this.authenticate({strategy: 'local', email, password}))
-        // TODO: Switch to using the users errors.create error.
+        // Just use the returned error instead of mapping it from the store.
         .catch(error => {
           // Convert the error to a plain object and add a message.
           let type = error.errorType
