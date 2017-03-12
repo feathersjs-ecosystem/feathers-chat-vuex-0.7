@@ -81,6 +81,12 @@ main.signup .button-primary {
   width: 100%;
 }
 
+main.login div.error,
+main.signup div.error {
+  text-align: center;
+  color: hotpink;
+}
+
 .button-secondary {
   background: none;
   border: 2px solid #CFCFCF;

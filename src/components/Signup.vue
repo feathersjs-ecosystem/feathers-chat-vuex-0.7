@@ -89,10 +89,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-div.error {
-  text-align: center;
-  color: hotpink;
-}
-</style>
