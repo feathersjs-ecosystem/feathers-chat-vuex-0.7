@@ -25,12 +25,16 @@ export default {
     createMessage: Function
   },
   methods: {
-    // TODO: Hook this up
-    scrollToBottom: vm => {
-      vm.$nextTick(() => {
-        const node = vm.$el.getElementsByClassName('chat')[0]
+    scrollToBottom () {
+      this.$nextTick(() => {
+        const node = this.$el.getElementsByClassName('chat')[0]
         node.scrollTop = node.scrollHeight
       })
+    }
+  },
+  watch: {
+    messages () {
+      this.messages.length && this.scrollToBottom()
     }
   },
   components: {
