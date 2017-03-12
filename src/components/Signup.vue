@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -57,6 +57,7 @@ export default {
   methods: {
     dismissError () {
       this.error = undefined
+      this.clearCreateError()
     },
     onSubmit (email, password) {
       this.dismissError()
@@ -77,6 +78,9 @@ export default {
     },
     ...mapActions('users', {
       createUser: 'create'
+    }),
+    ...mapMutations('users', {
+      clearCreateError: 'clearCreateError'
     }),
     ...mapActions('auth', [
       'authenticate'
