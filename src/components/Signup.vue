@@ -54,6 +54,7 @@ export default {
       error: undefined
     }
   },
+
   methods: {
     dismissError () {
       this.error = undefined
