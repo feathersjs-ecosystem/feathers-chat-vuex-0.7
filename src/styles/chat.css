@@ -69,6 +69,7 @@ main.signup fieldset {
 main.login fieldset input,
 main.signup fieldset input{
   width: 100%;
+  text-align: center;
   /* padding: 1.4em 0.7em; */
 }
 
