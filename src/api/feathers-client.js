@@ -24,8 +24,8 @@ const feathersClient = feathers()
 
 feathersClient.service('/users')
 feathersClient.service('/messages')
-feathersClient.service('/todos').vuex({idField: '_id'})
-feathersClient.service('/deeply/nested/names')
-feathersClient.service('/some/explicit/namespace').vuex({name: '/explicit/namespace'})
+// feathersClient.service('/todos').vuex({idField: '_id'})
+// feathersClient.service('/deeply/nested/names')
+// feathersClient.service('/some/explicit/namespace').vuex({name: '/explicit/namespace'})
 
 export default feathersClient
