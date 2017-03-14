@@ -1,4 +1,4 @@
-# feathers-vuex-example
+# feathers-chat-vuex
 
 > Feathers Vuex Example
 
