@@ -2,6 +2,10 @@
 
 > Feathers Vuex Example
 
+This is the Feathers Chat single page application using the [feathers-vuex](https://github.com/feathersjs/feathers-vuex) Feathers client plugin.
+
+![feathers chat](https://docs.feathersjs.com/getting-started/assets/chat.gif)
+
 ## Build Setup
 
 ``` bash
