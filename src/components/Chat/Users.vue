@@ -33,6 +33,7 @@ export default {
   }
 }
 </script>
+
 <style>
 aside.sidebar {
   background: #f8f8f8;
