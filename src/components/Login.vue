@@ -5,6 +5,13 @@
       <h1 class="font-100">Welcome Back</h1>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <a href="http://localhost:3030/auth/github">Login with GitHub</a>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop">
 
