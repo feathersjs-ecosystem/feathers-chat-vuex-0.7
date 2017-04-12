@@ -1280,6 +1280,10 @@ clone@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.2.tgz#260b7a99ebb1edfe247538175f783243cb19d149"
 
+clone@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -1722,7 +1726,7 @@ debug@0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
 
-debug@2, debug@2.6.1, debug@^2.1.1, debug@^2.2.0, debug@^2.6.0:
+debug@2, debug@2.6.1, debug@^2.1.1, debug@^2.2.0, debug@^2.6.0, debug@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
@@ -2422,7 +2426,7 @@ feathers-commons@^0.8.0, feathers-commons@^0.8.6, feathers-commons@^0.8.7:
   version "0.8.7"
   resolved "https://registry.yarnpkg.com/feathers-commons/-/feathers-commons-0.8.7.tgz#11c6f25b537745a983e8d61552d7db8932d53782"
 
-feathers-errors@^2.2.0, feathers-errors@^2.4.0:
+feathers-errors@^2.2.0, feathers-errors@^2.4.0, feathers-errors@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/feathers-errors/-/feathers-errors-2.5.0.tgz#103c1440fe76776b1d3c47af1e8b8b5e7e85362b"
   dependencies:
@@ -2443,6 +2447,12 @@ feathers-hooks@^1.8.1:
     feathers-commons "^0.8.6"
     feathers-hooks-common "^2.0.3"
     uberproto "^1.2.0"
+
+feathers-query-filters@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/feathers-query-filters/-/feathers-query-filters-2.1.2.tgz#cdb18224db5e19cc0140d528108e0908d5eb0654"
+  dependencies:
+    feathers-commons "^0.8.0"
 
 feathers-reactive@^0.4.1:
   version "0.4.1"
@@ -2468,6 +2478,18 @@ feathers-socketio@^1.5.2:
     feathers-socket-commons "^2.0.0"
     socket.io "^1.7.1"
     uberproto "^1.2.0"
+
+feathers-vuex@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/feathers-vuex/-/feathers-vuex-0.0.3.tgz#21447e1e5479bf1fdb0216de59e15a0934479a54"
+  dependencies:
+    clone "^2.1.0"
+    debug "^2.6.1"
+    deep-assign "^2.0.0"
+    feathers-commons "^0.8.7"
+    feathers-errors "^2.5.0"
+    feathers-query-filters "^2.1.2"
+    rubberduck "^1.1.1"
 
 feathers@^2.1.1:
   version "2.1.1"
