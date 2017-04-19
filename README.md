@@ -1,5 +1,7 @@
 # feathers-chat-vuex
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-chat-vuex.svg)](https://greenkeeper.io/)
+
 > Feathers Vuex Example
 
 This is the Feathers Chat single page application using the [feathers-vuex](https://github.com/feathersjs/feathers-vuex) Feathers client plugin.
