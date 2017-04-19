@@ -14,7 +14,7 @@
       </li>
     </ul>
     <footer class="flex flex-row flex-center">
-      <a href="#" class="logout button button-primary" @click="logout">Sign Out</a>
+      <a href="javascript://" class="logout button button-primary" @click="logout">Sign Out</a>
     </footer>
   </aside>
 </template>
