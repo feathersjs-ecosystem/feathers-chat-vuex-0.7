@@ -6,8 +6,6 @@ import router from './router'
 import store from './store/'
 import '@/api/feathers-client'
 
-window.store = store
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
