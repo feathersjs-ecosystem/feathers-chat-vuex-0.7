@@ -20,7 +20,7 @@
     "feathers": "^2.1.1",
     "feathers-authentication-client": "^0.3.1",
     "feathers-authentication-popups": "^0.1.2",
-    "feathers-hooks": "^1.8.1",
+    "feathers-hooks": "^2.0.1",
     "feathers-reactive": "^0.4.1",
     "feathers-socketio": "^1.5.2",
     "feathers-vuex": "^0.0.4",
