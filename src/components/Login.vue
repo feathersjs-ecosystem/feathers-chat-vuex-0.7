@@ -47,7 +47,7 @@ export default {
   methods: {
     dismissError () {
       this.error = undefined
-      this.clearAuthenticationError()
+      this.clearAuthenticateError()
     },
 
     onSubmit (email, password) {
@@ -64,7 +64,7 @@ export default {
         })
     },
     ...mapMutations('auth', {
-      clearAuthenticationError: 'clearAuthenticationError'
+      clearAuthenticateError: 'clearAuthenticateError'
     }),
     ...mapActions('auth', ['authenticate'])
   }
