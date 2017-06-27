@@ -23,7 +23,7 @@
     "feathers-hooks": "^2.0.1",
     "feathers-reactive": "^0.4.1",
     "feathers-socketio": "^2.0.0",
-    "feathers-vuex": "^0.5.0",
+    "feathers-vuex": "^0.6.0",
     "getbase": "^3.2.4",
     "global": "^4.3.2",
     "rubberduck": "^1.1.1",
