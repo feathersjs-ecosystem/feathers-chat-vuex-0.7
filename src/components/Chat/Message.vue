@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import dateFns from 'date-fns'
+import { format } from 'date-fns/esm'
 
 export default {
   props: ['message', 'index'],
   computed: {
     formattedDate () {
-      return dateFns.format(this.message.createdAt, 'MMM Do, hh:mm:ss')
+      return format(this.message.createdAt, 'MMM Do, hh:mm:ss')
     }
   }
 }
