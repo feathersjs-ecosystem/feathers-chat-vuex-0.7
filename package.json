@@ -63,7 +63,7 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
+    "file-loader": "^1.0.0-rc.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "function-bind": "^1.1.0",
     "html-webpack-plugin": "^2.29.0",
