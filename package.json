@@ -91,7 +91,7 @@
     "sinon-chai": "^2.11.0",
     "steal-css": "^1.2.4",
     "steal-less": "^1.2.0",
-    "steal-svg": "^0.0.5",
+    "steal-svg": "^0.0.6",
     "steal-vue": "^0.0.6",
     "url-loader": "^0.5.9",
     "vue-loader": "^13.0.0",
