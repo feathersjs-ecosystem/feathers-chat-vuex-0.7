@@ -19,7 +19,11 @@ export default {
   watch: {
     // When the user is set, redirect to the Chat page.
     user (newVal) {
-      this.$router.replace({name: 'Chat'})
+      if (newVal === undefined) {
+        this.$router.replace({name: 'Login'})
+      } else {
+        this.$router.replace({name: 'Chat'})
+      }
     }
   },
   mounted () {
