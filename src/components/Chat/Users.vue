@@ -22,6 +22,16 @@
 <script>
 export default {
   name: 'user-list',
+  data () {
+    return {
+      dummyUser: [
+        {
+          email: 'noemail',
+          avatar: 'https://s.gravatar.com/avatar/7eb0f9eac6df7e6be3971144999a2152?s=200'
+        }
+      ]
+    }
+  },
   computed: {
     plural () {
       return this.users.length === 1 ? 'user' : 'users'
