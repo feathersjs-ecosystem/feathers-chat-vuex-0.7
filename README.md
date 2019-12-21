@@ -2,7 +2,7 @@
 
 > Feathers Vuex 0.7 - This is the OLD VERSION
 
-Follow this link for the [NEW VERSION based on Feathers-Vuex v3.0](https://github.com/feathersjs-ecosystem/feathers-chat-vuex)
+[Follow this link for the NEW VERSION based on Feathers-Vuex v3.0](https://github.com/feathersjs-ecosystem/feathers-chat-vuex)
 
 This is an old version of the Feathers Chat single page application using [feathers-vuex](https://github.com/feathersjs-ecosystem/feathers-vuex).  It is no longer maintained now that there is a new version available at https://github.com/feathersjs-ecosystem/feathers-chat-vuex.  It serves as a valuable comparison of the old way with the new Feathers-Vuex 3.0.
 
